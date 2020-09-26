@@ -57,14 +57,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelTelaPrincipalLayout.setVerticalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 374, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
