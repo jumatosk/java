@@ -41,7 +41,7 @@ public class TelaCadastroItem extends javax.swing.JFrame {
         jTextFieldPreco = new javax.swing.JTextField();
         jLabelCadastroItem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vídeo Locadora Hora da Pipoca");
 
         jPanelItem.setBackground(new java.awt.Color(102, 102, 102));
@@ -166,6 +166,7 @@ public class TelaCadastroItem extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -5,6 +5,10 @@
  */
 package locadora.view;
 
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+import locadora.controller.FilmeController;
+
 /**
  *
  * @author jumat
@@ -43,7 +47,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         jSpinnerDuracao = new javax.swing.JSpinner();
         jLabelCadastroFilme = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vídeo Locadora Hora da Pipoca ");
 
         jPanelCadastroFilme.setBackground(new java.awt.Color(102, 102, 102));
@@ -70,6 +74,11 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jButtonSalvar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButtonLimpar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonLimpar.setText("Limpar");
@@ -181,7 +190,29 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        int duracao = Integer.parseInt(jSpinnerDuracao.getValue().toString());
+        String genero = jComboBoxGenero.getSelectedItem().toString();
+        boolean sucesso;
+        
+        try {
+            FilmeController filmeController = new FilmeController();
+            
+            sucesso = filmeController.cadastrarFilme(jTextFieldTitulo.getText(), genero, jTextAreaSinopse.getText(), duracao);
+            
+            if(sucesso){
+//                JOptionPane.showMessageDialog(null, "Filme cadastrado com sucesso!");
+                this.jButtonLimpar(evt);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar o filme!");
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,4 +266,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaSinopse;
     private javax.swing.JTextField jTextFieldTitulo;
     // End of variables declaration//GEN-END:variables
+
+    private void jButtonLimpar(ActionEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

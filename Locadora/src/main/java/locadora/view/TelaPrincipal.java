@@ -5,6 +5,9 @@
  */
 package locadora.view;
 
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author jumat
@@ -68,24 +71,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItemAtor.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jMenuItemAtor.setText("Ator");
+        jMenuItemAtor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAtorActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemAtor);
 
         jMenuItemCliente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemCliente);
 
         jMenuItemFilme.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jMenuItemFilme.setText("Filme");
+        jMenuItemFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFilmeActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemFilme);
 
         jMenuItem.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jMenuItem.setText("Item");
+        jMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItem);
 
         jMenuBarTelaPrincipal.add(jMenuCadastro);
 
         jMenuSair.setText("Sair");
         jMenuSair.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSairActionPerformed(evt);
+            }
+        });
         jMenuBarTelaPrincipal.add(jMenuSair);
 
         setJMenuBar(jMenuBarTelaPrincipal);
@@ -110,6 +138,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFilmeActionPerformed
+        new TelaCadastroFilme().setVisible(true);
+    }//GEN-LAST:event_jMenuItemFilmeActionPerformed
+
+    private void jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActionPerformed
+        new TelaCadastroItem().setVisible(true);
+    }//GEN-LAST:event_jMenuItemActionPerformed
+
+    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+        new TelaCadastroCliente().setVisible(true);
+    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemAtorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtorActionPerformed
+        new TelaCadastroAtor().setVisible(true);
+    }//GEN-LAST:event_jMenuItemAtorActionPerformed
+
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+  
+    }//GEN-LAST:event_jMenuSairActionPerformed
 
     /**
      * @param args the command line arguments

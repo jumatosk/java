@@ -44,9 +44,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonConsultar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vídeo Locadora Hora da Pipoca ");
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
