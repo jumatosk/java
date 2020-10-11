@@ -82,13 +82,28 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jButtonLimpar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonConsultar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.setToolTipText("");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         jTextFieldTitulo.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
 
@@ -204,8 +219,8 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             sucesso = filmeController.cadastrarFilme(jTextFieldTitulo.getText(), genero, jTextAreaSinopse.getText(), duracao);
             
             if(sucesso){
-//                JOptionPane.showMessageDialog(null, "Filme cadastrado com sucesso!");
-                this.jButtonLimpar(evt);
+                JOptionPane.showMessageDialog(null, "Filme cadastrado com sucesso!");
+                this.jButtonLimparActionPerformed(evt);
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar o filme!");
             }
@@ -213,6 +228,21 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldTitulo.setText("");
+        jTextAreaSinopse.setText("");
+        jComboBoxGenero.setSelectedIndex(0);
+        jSpinnerDuracao.setValue(20);
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
