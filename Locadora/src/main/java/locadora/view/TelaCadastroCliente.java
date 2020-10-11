@@ -5,6 +5,9 @@
  */
 package locadora.view;
 
+import javax.swing.JOptionPane;
+import locadora.controller.ClienteController;
+
 /**
  *
  * @author jumat
@@ -100,15 +103,35 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jButtonSalvar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButtonLimpar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonConsultar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCadastroClienteLayout = new javax.swing.GroupLayout(jPanelCadastroCliente);
         jPanelCadastroCliente.setLayout(jPanelCadastroClienteLayout);
@@ -202,6 +225,41 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        boolean sucesso;
+        
+        try {
+            ClienteController clienteController = new ClienteController();
+            sucesso = clienteController.cadastrarCliente(jTextFieldNome.getText(), jFormattedTextFieldCPF.getText(), 
+                      jTextFieldEmail.getText(), jTextFieldEndereco.getText(), jFormattedTextFieldDtNascimento.getText());
+            
+            if(sucesso) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.");
+                this.jButtonLimparActionPerformed(evt);
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldNome.setText("");
+        jFormattedTextFieldDtNascimento.setText("");
+        jFormattedTextFieldCPF.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldEndereco.setText("");
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
