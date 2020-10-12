@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 
 
-public class connectionMVC {
+public class ConnectionMVC {
     
     public Connection getConnection() {
         Connection conn = null;
@@ -27,7 +27,7 @@ public class connectionMVC {
         }
         
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mvc?useSSL=false", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/locadora?serverTimezone=UTC", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
