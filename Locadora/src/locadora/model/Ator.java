@@ -6,6 +6,8 @@
 package locadora.model;
 
 import java.util.ArrayList;
+import locadora.dao.AtorDAO;
+import locadora.dao.ExceptionDAO;
 /**
  *
  * @author jumat
@@ -57,8 +59,8 @@ public class Ator {
         this.filmes = filmes;
     }
     
-    public void cadastrarAtor(Ator ator) {
-        
+    public void cadastrarAtor(Ator ator) throws ExceptionDAO {
+        new AtorDAO().cadastrarAtor(ator);
     }
     
 }

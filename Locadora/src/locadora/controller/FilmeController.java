@@ -5,6 +5,7 @@
  */
 package locadora.controller;
 
+import locadora.dao.ExceptionDAO;
 import locadora.model.Filme;
 
 /**
@@ -13,7 +14,7 @@ import locadora.model.Filme;
  */
 public class FilmeController {
 
-    public boolean cadastrarFilme(String titulo, String genero, String sinopse, int duracao) {
+    public boolean cadastrarFilme(String titulo, String genero, String sinopse, int duracao) throws ExceptionDAO {
         if (titulo != null && titulo.length() > 0
                 && genero != null && genero.length() > 0
                 && sinopse != null && sinopse.length() > 0
