@@ -7,6 +7,8 @@ package locadora.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import locadora.dao.ClienteDAO;
+import locadora.dao.ExceptionDAO;
 /**
  *
  * @author jumat
@@ -88,8 +90,8 @@ public class Cliente {
         return itens;
     }
     
-    public void cadastrarCliente(Cliente cliente) {
-        
+    public void cadastrarCliente(Cliente cliente) throws ExceptionDAO {
+        new ClienteDAO().cadastrarCliente(cliente);
     }
     
 }
