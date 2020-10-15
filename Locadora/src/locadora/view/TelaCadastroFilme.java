@@ -101,7 +101,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         jButtonConsultar.setToolTipText("");
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarActionPerformed(evt);
+                abrirTelaConsulta(evt);
             }
         });
 
@@ -233,9 +233,11 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConsultarActionPerformed
+    private void abrirTelaConsulta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirTelaConsulta
+        TelaConsultaFilme telaConsultaFilme = new TelaConsultaFilme(this);
+        telaConsultaFilme.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_abrirTelaConsulta
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         jTextFieldTitulo.setText("");
