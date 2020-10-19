@@ -48,9 +48,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setResizable(false);
 
         jLabelMensagem.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabelMensagem.setForeground(new java.awt.Color(102, 102, 255));
         jLabelMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMensagem.setText("Alugel de filmes é com a gente!");
+        jLabelMensagem.setText("Alugue dois filmes e leve uma pipoca!");
 
         jMenuLocacao.setText("Locação");
         jMenuLocacao.setFocusable(false);
@@ -129,10 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabelMensagem)
-                .addContainerGap(163, Short.MAX_VALUE))
+            .addComponent(jLabelMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
         );
 
         pack();

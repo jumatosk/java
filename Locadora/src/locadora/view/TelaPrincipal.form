@@ -136,11 +136,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-              <Component id="jLabelMensagem" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="163" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jLabelMensagem" alignment="1" pref="319" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -150,11 +146,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Calibri" size="36" style="0"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="66" red="66" type="rgb"/>
-        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Alugel de filmes &#xe9; com a gente!"/>
+        <Property name="text" type="java.lang.String" value="Alugue dois filmes e leve uma pipoca!"/>
       </Properties>
     </Component>
   </SubComponents>
