@@ -176,7 +176,7 @@ public class JAddUnity extends JFrame implements ActionListener {
 		} else if (arg0.getSource().equals(this.buttonManhattan)) {
 			try {
 				this.addManhattan();
-				JOptionPane.showConfirmDialog(this, "Unidade Adicionada!");
+				JOptionPane.showMessageDialog(this, "Unidade Adicionada!");
 			} 
 			catch (SQLIntegrityConstraintViolationException e) {
 				JOptionPane.showMessageDialog(this, "Unidade com id inserido já existe.");

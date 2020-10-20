@@ -51,8 +51,10 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private AppMonitoringIF logic;
 	private Unity unity;
-	
+
 	private JAddUnity jAddManhattan;
+	private Button buttonApagar;
+	private Button buttonListar;
 
 	public JMonitoringArea() throws SQLException {
 		setTitle("\u00C1rea de Monitoramento");
@@ -130,7 +132,7 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 		contentPane.add(this.textFieldCH4);
 
 		this.idResult = new Label();
-		idResult.setAlignment(Label.CENTER);
+		this.idResult.setAlignment(Label.CENTER);
 		this.idResult.setFont(new Font("Calibri", Font.BOLD, 16));
 		this.idResult.setBounds(10, 268, 607, 24);
 		this.idResult.addPropertyChangeListener(new PropertyChangeListener() {
@@ -149,15 +151,27 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 		this.buttonBuscar = new Button("Buscar");
 
 		this.buttonBuscar.addActionListener(this);
-		buttonBuscar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		buttonBuscar.setBounds(173, 308, 111, 37);
-		contentPane.add(buttonBuscar);
-		
+		this.buttonBuscar.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.buttonBuscar.setBounds(173, 308, 111, 37);
+		contentPane.add(this.buttonBuscar);
+
 		this.adicionarUnidade = new Button("Adicionar Unidade");
 		this.adicionarUnidade.addActionListener(this);
 		this.adicionarUnidade.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.adicionarUnidade.setBounds(215, 375, 174, 37);
+		this.adicionarUnidade.setBounds(10, 379, 159, 37);
 		contentPane.add(this.adicionarUnidade);
+
+		this.buttonApagar = new Button("Apagar Unidade");
+		this.buttonApagar.addActionListener(this);
+		this.buttonApagar.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.buttonApagar.setBounds(244, 379, 159, 37);
+		contentPane.add(this.buttonApagar);
+
+		this.buttonListar = new Button("Listar Unidades");
+		this.buttonListar.addActionListener(this);
+		this.buttonListar.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.buttonListar.setBounds(458, 379, 159, 37);
+		contentPane.add(this.buttonListar);
 
 		this.logic = new AppMonitoring();
 	}
@@ -167,13 +181,25 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 			this.buscar();
 		} else if (arg0.getSource().equals(this.buttonMonitorar)) {
 			this.monitorar();
-		} else if(arg0.getSource().equals(this.adicionarUnidade)) {
-		 	try {
+		} else if (arg0.getSource().equals(this.adicionarUnidade)) {
+			try {
 				new JAddUnity().setVisible(true);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} 
+		} else if (arg0.getSource().equals(this.buttonApagar)) {
+			try {
+				new JDeleteUnity().setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (arg0.getSource().equals(this.buttonListar)) {
+			try {
+				new JGetAllUnities().frmListarTodasUnidades.setVisible(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void buscar() {
@@ -208,7 +234,7 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 
 		try {
 			idTxt = this.logic.monitorar(abscissa, ordenada, video, termometro, co2, ch4);
-			
+
 			JOptionPane.showMessageDialog(this, "Unidade " + idTxt + " transladada para o local informado!");
 		} catch (Exception e) {
 			e.printStackTrace();

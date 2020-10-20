@@ -20,12 +20,14 @@ public class UnitySQLDAO implements UnityDAOIF {
 	private static final String DB_USER = "root";
 	private static final String DB_PWD = "";
 	private static final String SAVE = "INSERT INTO UNITY (id, latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType)"
-										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_POSSIBLE = "SELECT id, latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType FROM unity"
-													+ " WHERE videoCamera = ? AND thermomether = ? AND co2 = ? AND ch4 = ? AND available = true";
+			+ " WHERE videoCamera = ? AND thermomether = ? AND co2 = ? AND ch4 = ? AND available = true";
 	private static final String GET_UNITY = "SELECT latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType FROM UNITY WHERE id = ?";
+	public static final String GET_ALL = "SELECT * FROM UNITY";
 	public static final String UPDATE = "UPDATE UNITY SET latitude = ?, longitude = ?, videoCamera = ?, "
-										+ "thermomether = ?, co2 = ?, ch4 = ?, available = ? WHERE id = ?";
+			+ "thermomether = ?, co2 = ?, ch4 = ?, available = ? WHERE id = ?";
+	public static final String DELETE = "DELETE FROM UNITY WHERE id = ?";
 
 	public UnitySQLDAO() throws SQLException {
 		DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -128,21 +130,45 @@ public class UnitySQLDAO implements UnityDAOIF {
 		stmt.setBoolean(6, unity.isCh4());
 		stmt.setBoolean(7, !unity.isAvailable());
 		stmt.setString(8, unity.getId());
-		
+
 		stmt.executeUpdate();
 		stmt.close();
 	}
 
-	public static void main(String[] args) throws Exception {
-		UnityDAOIF unityDAOIF = new UnitySQLDAO();
-		ArrayList<Unity> unities = null;
+	@Override
+	public void delete(String id) throws SQLException {
+		PreparedStatement stmt = this.getConnection().prepareStatement(DELETE);
 
-		unities = unityDAOIF.getAllPossibleUnity(true, true, false, true);
+		stmt.setString(1, id);
 
-		for (Unity u : unities) {
-			System.out.println("Id: " + u.getId() + ", Latitude: " + u.getPoint().getLatitude() + ", Longitude: "
-					+ u.getPoint().getLongitude());
+		stmt.executeUpdate();
+		stmt.close();
+	}
+
+	@Override
+	public ArrayList<Unity> getAll() throws Exception {
+		ArrayList<Unity> unities = new ArrayList<>();
+		Unity unity = null;
+
+		PreparedStatement stmt = this.getConnection().prepareStatement(GET_ALL);
+		ResultSet rSet = stmt.executeQuery();
+
+		while (rSet.next()) {
+			unity = null;
+			int tipo = rSet.getInt("unityType");
+
+			if (tipo == EUCLIDEAN_UNITY) {
+				unity = new Euclidean(rSet.getString(1), rSet.getFloat(2), rSet.getFloat(3), rSet.getBoolean(4),
+						rSet.getBoolean(5), rSet.getBoolean(6), rSet.getBoolean(7));
+			} else if (tipo == MANHATTAN_UNITY) {
+				unity = new Manhattan(rSet.getString(1), rSet.getFloat(2), rSet.getFloat(3), rSet.getBoolean(4),
+						rSet.getBoolean(5), rSet.getBoolean(6), rSet.getBoolean(7));
+			}
+
+			unities.add(unity);
 		}
+		
+		return unities;
 	}
 
 }

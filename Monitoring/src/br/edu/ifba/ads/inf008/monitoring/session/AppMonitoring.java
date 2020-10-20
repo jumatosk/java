@@ -3,6 +3,8 @@ package br.edu.ifba.ads.inf008.monitoring.session;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Delete;
+
 import br.edu.ifba.ads.inf008.monitoring.dao.UnityDAOIF;
 import br.edu.ifba.ads.inf008.monitoring.dao.UnitySQLDAO;
 import br.edu.ifba.ads.inf008.monitoring.entities.Euclidean;
@@ -29,6 +31,10 @@ public class AppMonitoring implements AppMonitoringIF {
 		Manhattan manhattan = new Manhattan(id, latitude, longitude, videoCamera, thermomether, co2, ch4);
 
 		this.unityDAOIF.save(manhattan);
+	}
+	
+	public void deleteUnity(String id) throws Exception {
+		this.unityDAOIF.delete(id);
 	}
 
 	@Override
@@ -69,6 +75,11 @@ public class AppMonitoring implements AppMonitoringIF {
 		}
 
 		return possibleUnity.getId();
-
+	}
+	
+	public ArrayList<Unity> getAll() throws Exception {
+		ArrayList<Unity> unities = this.unityDAOIF.getAll();
+		
+		return unities;
 	}
 }
