@@ -23,10 +23,12 @@ public class UnitySQLDAO implements UnityDAOIF {
 			+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_POSSIBLE = "SELECT id, latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType FROM unity"
 			+ " WHERE videoCamera = ? AND thermomether = ? AND co2 = ? AND ch4 = ? AND available = true";
-	private static final String GET_UNITY = "SELECT latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType FROM UNITY WHERE id = ?";
+	private static final String GET_UNITY = "SELECT id, latitude, longitude, videoCamera, thermomether, co2, ch4, available, unityType FROM UNITY WHERE id = ?";
 	public static final String GET_ALL = "SELECT * FROM UNITY";
-	public static final String UPDATE = "UPDATE UNITY SET latitude = ?, longitude = ?, videoCamera = ?, "
+	public static final String UPDATE_MONITORED = "UPDATE UNITY SET latitude = ?, longitude = ?, videoCamera = ?, "
 			+ "thermomether = ?, co2 = ?, ch4 = ?, available = ? WHERE id = ?";
+	public static final String UPDATE = "UPDATE UNITY SET latitude = ?, longitude = ?, videoCamera = ?, " 
+			+ "thermomether = ?, co2 = ?, ch4 = ? WHERE id = ?";
 	public static final String DELETE = "DELETE FROM UNITY WHERE id = ?";
 
 	public UnitySQLDAO() throws SQLException {
@@ -99,13 +101,14 @@ public class UnitySQLDAO implements UnityDAOIF {
 
 		stmt.setString(1, id);
 		ResultSet rSet = stmt.executeQuery();
-
-		if (!rSet.next())
+		
+		if (!rSet.next()) {
 			throw new UnityException("Não há unidades disponíveis.");
+		}
 
 		if (rSet.next()) {
 			int tipo = rSet.getInt("unityType");
-
+		
 			if (tipo == EUCLIDEAN_UNITY) {
 				unity = new Euclidean(id, rSet.getFloat(2), rSet.getFloat(3), rSet.getBoolean(4), rSet.getBoolean(5),
 						rSet.getBoolean(6), rSet.getBoolean(7));
@@ -115,12 +118,13 @@ public class UnitySQLDAO implements UnityDAOIF {
 			}
 
 		}
+		
 		return unity;
 	}
 
 	@Override
-	public void update(Unity unity) throws SQLException {
-		PreparedStatement stmt = this.getConnection().prepareStatement(UPDATE);
+	public void updateMonitored(Unity unity) throws SQLException {
+		PreparedStatement stmt = this.getConnection().prepareStatement(UPDATE_MONITORED);
 
 		stmt.setFloat(1, unity.getPoint().getLatitude());
 		stmt.setFloat(2, unity.getPoint().getLongitude());
@@ -133,6 +137,23 @@ public class UnitySQLDAO implements UnityDAOIF {
 
 		stmt.executeUpdate();
 		stmt.close();
+	}
+	
+	@Override
+	public void update(Unity unity) throws Exception {
+		PreparedStatement stmt = this.getConnection().prepareStatement(UPDATE);
+
+		stmt.setFloat(1, unity.getPoint().getLatitude());
+		stmt.setFloat(2, unity.getPoint().getLongitude());
+		stmt.setBoolean(3, unity.isVideoCamera());
+		stmt.setBoolean(4, unity.isThermomether());
+		stmt.setBoolean(5, unity.isCo2());
+		stmt.setBoolean(6, unity.isCh4());
+		stmt.setString(7, unity.getId());
+
+		stmt.executeUpdate();
+		stmt.close();
+		
 	}
 
 	@Override

@@ -47,6 +47,7 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 	private Button buttonMonitorar;
 	private Button buttonBuscar;
 	private Button adicionarUnidade;
+	private Button buttonAtualizar;
 
 	private JPanel contentPane;
 	private AppMonitoringIF logic;
@@ -155,23 +156,29 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 		this.buttonBuscar.setBounds(173, 308, 111, 37);
 		contentPane.add(this.buttonBuscar);
 
-		this.adicionarUnidade = new Button("Adicionar Unidade");
+		this.adicionarUnidade = new Button("Adicionar");
 		this.adicionarUnidade.addActionListener(this);
 		this.adicionarUnidade.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.adicionarUnidade.setBounds(10, 379, 159, 37);
+		this.adicionarUnidade.setBounds(10, 379, 116, 37);
 		contentPane.add(this.adicionarUnidade);
 
-		this.buttonApagar = new Button("Apagar Unidade");
+		this.buttonApagar = new Button("Apagar");
 		this.buttonApagar.addActionListener(this);
 		this.buttonApagar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonApagar.setBounds(244, 379, 159, 37);
+		this.buttonApagar.setBounds(173, 379, 116, 37);
 		contentPane.add(this.buttonApagar);
 
-		this.buttonListar = new Button("Listar Unidades");
+		this.buttonListar = new Button("Listar");
 		this.buttonListar.addActionListener(this);
 		this.buttonListar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonListar.setBounds(458, 379, 159, 37);
+		this.buttonListar.setBounds(338, 379, 116, 37);
 		contentPane.add(this.buttonListar);
+		
+		this.buttonAtualizar = new Button("Atualizar");
+		this.buttonAtualizar.addActionListener(this);
+		this.buttonAtualizar.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.buttonAtualizar.setBounds(501, 379, 116, 37);
+		contentPane.add(this.buttonAtualizar);
 
 		this.logic = new AppMonitoring();
 	}
@@ -199,6 +206,12 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		} else if(arg0.getSource().equals(this.buttonAtualizar)) {
+			try {
+				new JUpdateUnity().setVisible(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -214,11 +227,11 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 		try {
 			unity = this.logic.possibleUnity(abscissa, ordenada, video, termometro, co2, ch4);
 			this.idResult.setText("Unidade mais próxima: " + unity.getId());
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this, "Preencha os campos corretamente");
 		} catch (IndexOutOfBoundsException e) {
 			JOptionPane.showMessageDialog(this, "Unidades não encontrada para essa configuração");
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(this, "Preencha os campos corretamente");
-		} catch (Exception e) {
+		}  catch (Exception e) {
 			JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado");
 		}
 	}

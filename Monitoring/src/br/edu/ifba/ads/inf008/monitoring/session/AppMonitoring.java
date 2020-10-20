@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Delete;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Update;
 
 import br.edu.ifba.ads.inf008.monitoring.dao.UnityDAOIF;
 import br.edu.ifba.ads.inf008.monitoring.dao.UnitySQLDAO;
@@ -35,6 +36,14 @@ public class AppMonitoring implements AppMonitoringIF {
 	
 	public void deleteUnity(String id) throws Exception {
 		this.unityDAOIF.delete(id);
+	}
+	
+	public void update(Unity unity) throws Exception {
+		this.unityDAOIF.update(unity);
+	}
+	
+	public Unity getUnity(String id) throws Exception {
+		return this.unityDAOIF.getUnity(id);
 	}
 
 	@Override
@@ -71,7 +80,7 @@ public class AppMonitoring implements AppMonitoringIF {
 		} 
 		else if (possibleUnity instanceof Manhattan) {
 			Unity manhattan = new Manhattan(possibleUnity.getId(), abscissa, ordenada, video, termometro, co2, ch4);
-			this.unityDAOIF.update(manhattan);
+			this.unityDAOIF.updateMonitored(manhattan);
 		}
 
 		return possibleUnity.getId();
