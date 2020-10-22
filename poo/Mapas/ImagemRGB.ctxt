@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ImagemRGB
+comment1.params=altura\ largura
+comment1.target=ImagemRGB(int,\ int)
+comment2.params=x\ y\ cor
+comment2.target=void\ setPixel(int,\ int,\ MapaRGB)
+comment3.params=
+comment3.target=int\ getAltura()
+comment4.params=
+comment4.target=int\ getLargura()
+comment5.params=altura\ largura\ cor
+comment5.target=void\ criarImagem(int,\ int,\ MapaRGB)
+numComments=6

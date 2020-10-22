@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=MapaCMYK
+comment1.params=c\ m\ y\ k
+comment1.target=MapaCMYK(int,\ int,\ int,\ int)
+comment2.params=
+comment2.target=int\ getC()
+comment3.params=
+comment3.target=int\ getM()
+comment4.params=
+comment4.target=int\ getY()
+comment5.params=
+comment5.target=int\ getK()
+comment6.params=
+comment6.target=int\ getLuminosidade()
+numComments=7

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=DatabaseMusicas
+comment1.params=
+comment1.target=DatabaseMusicas()
+comment2.params=musica
+comment2.target=void\ addMusica(Musica)
+comment3.params=nome\ duracao\ base
+comment3.target=Playlist\ similar(java.lang.String,\ long,\ Playlist)
+numComments=4

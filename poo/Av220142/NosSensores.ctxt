@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=NosSensores
+comment1.params=latitude\ longitude\ altura\ id\ valor
+comment1.target=NosSensores(double,\ double,\ double,\ int,\ double)
+numComments=2

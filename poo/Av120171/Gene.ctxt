@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Gene
+comment1.params=valor
+comment1.target=Gene(int)
+comment2.params=valor
+comment2.target=void\ setValor(int)
+comment3.params=
+comment3.target=int\ getValor()
+comment4.params=gene
+comment4.target=boolean\ equals(Gene)
+comment5.params=
+comment5.target=Gene\ clonar()
+numComments=6

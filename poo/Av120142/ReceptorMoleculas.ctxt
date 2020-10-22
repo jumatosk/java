@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=ReceptorMoleculas
+comment1.params=valor
+comment1.target=ReceptorMoleculas(double)
+comment2.params=
+comment2.target=ReceptorMoleculas()
+comment3.params=outro
+comment3.target=double\ getAfinidade(ReceptorMoleculas)
+comment4.params=
+comment4.target=double\ getProteina()
+comment5.params=valor
+comment5.target=void\ setProteina(double)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

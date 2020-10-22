@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Proposta
+comment1.params=valor\ objeto
+comment1.target=Proposta(double,\ Objetos)
+comment2.params=valor
+comment2.target=void\ setValor(double)
+comment3.params=objeto
+comment3.target=void\ setObjeto(Objetos)
+numComments=4

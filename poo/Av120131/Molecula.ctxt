@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Molecula
+comment1.params=
+comment1.target=Molecula()
+comment2.params=atomo
+comment2.target=void\ addAtomo(Atomo)
+comment3.params=atomo
+comment3.target=void\ add(Atomo)
+comment4.params=
+comment4.target=Atomo\ getMenor()
+comment5.params=a
+comment5.target=int\ getQtdAtomos(Atomo)
+comment6.params=
+comment6.target=int\ getSize()
+comment7.params=pos
+comment7.target=Atomo\ getAtomo(int)
+comment8.params=outra
+comment8.target=boolean\ mesmosElementos(Molecula)
+comment9.params=outra
+comment9.target=boolean\ equivalentes(Molecula)
+numComments=10

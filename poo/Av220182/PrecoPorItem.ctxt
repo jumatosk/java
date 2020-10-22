@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=PrecoPorItem
+comment1.params=numeracao\ descricao
+comment1.target=PrecoPorItem(java.lang.String,\ java.lang.String)
+numComments=2

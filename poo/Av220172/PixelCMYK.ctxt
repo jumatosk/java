@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=PixelCMYK
+comment1.params=cyan\ magenta\ yellow\ key
+comment1.target=PixelCMYK(short,\ short,\ short,\ short)
+comment2.params=
+comment2.target=int\ getLuminosidade()
+comment3.params=
+comment3.target=short\ getCyan()
+comment4.params=
+comment4.target=short\ getMagenta()
+comment5.params=
+comment5.target=short\ getYellow()
+comment6.params=
+comment6.target=short\ getKey()
+numComments=7

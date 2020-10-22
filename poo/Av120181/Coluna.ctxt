@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Coluna
+comment1.params=nome\ tipo
+comment1.target=Coluna(java.lang.String,\ Tipo)
+comment10.params=
+comment10.target=boolean\ getNulo()
+comment11.params=chavePrimaria
+comment11.target=void\ setChavePrimaria(boolean)
+comment12.params=
+comment12.target=boolean\ getChavePrimaria()
+comment2.params=nome\ tipo\ nulo\ chavePrimaria
+comment2.target=Coluna(java.lang.String,\ Tipo,\ boolean,\ boolean)
+comment3.params=coluna
+comment3.target=boolean\ equals(Coluna)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=nome
+comment5.target=void\ setNome(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getNome()
+comment7.params=tipo
+comment7.target=void\ setTipo(Tipo)
+comment8.params=
+comment8.target=Tipo\ getTipo()
+comment9.params=nulo
+comment9.target=void\ setNulo(boolean)
+numComments=13

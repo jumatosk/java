@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Empresa
+comment1.params=nome\ CNPJ\ representante
+comment1.target=Empresa(java.lang.String,\ int,\ java.lang.String)
+comment2.params=proposta
+comment2.target=void\ adicionarProposta(Proposta)
+comment3.params=nome
+comment3.target=void\ setNome(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getNome()
+comment5.params=CNPJ
+comment5.target=void\ setCNPJ(int)
+comment6.params=
+comment6.target=int\ getCNPJ()
+comment7.params=representante
+comment7.target=void\ setRepresentate(java.lang.String)
+numComments=8

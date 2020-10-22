@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=EstacoesDeColeta
+comment1.params=latitude\ longitude\ altura\ id
+comment1.target=EstacoesDeColeta(double,\ double,\ double,\ int)
+numComments=2

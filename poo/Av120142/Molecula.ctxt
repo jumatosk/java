@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Molecula
+comment1.params=tamanho
+comment1.target=Molecula(int)
+comment2.params=receptor
+comment2.target=void\ setReceptor(ReceptorMoleculas)
+comment3.params=posicao
+comment3.target=ReceptorMoleculas\ getReceptor(int)
+comment4.params=
+comment4.target=int\ getSize()
+comment5.params=outra
+comment5.target=double\ getAfinidade(Molecula)
+comment6.params=outra
+comment6.target=boolean\ adere(Molecula)
+comment7.params=outra
+comment7.target=boolean\ detecta(Molecula)
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9

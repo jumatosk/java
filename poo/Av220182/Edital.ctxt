@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Edital
+comment1.params=numeracao\ descricao
+comment1.target=Edital(java.lang.String,\ java.lang.String)
+comment2.params=empresa
+comment2.target=void\ adicionarEmpresa(Empresa)
+comment3.params=
+comment3.target=Empresa[]\ getEmpresas()
+comment4.params=numeracao
+comment4.target=void\ setNumeracao(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ getNumeracao()
+comment6.params=descricao
+comment6.target=void\ setDescricao(java.lang.String)
+comment7.params=
+comment7.target=java.lang.String\ getDescricao()
+numComments=8
