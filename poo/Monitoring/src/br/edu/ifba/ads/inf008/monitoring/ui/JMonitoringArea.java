@@ -26,23 +26,21 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import java.awt.Checkbox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JMonitoringArea extends JFrame implements ActionListener {
 
 	private Label abscissa;
 	private Label ordenada;
-	private Label video;
-	private Label termometro;
-	private Label co2;
-	private Label CH4;
 	private Label idResult;
 
 	private TextField textFieldAbcissa;
 	private TextField textFieldOrdenada;
-	private TextField textFieldVideo;
-	private TextField textFieldTermometro;
-	private TextField textFieldCO2;
-	private TextField textFieldCH4;
 
 	private Button buttonMonitorar;
 	private Button buttonBuscar;
@@ -56,18 +54,57 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 	private JAddUnity jAddManhattan;
 	private Button buttonApagar;
 	private Button buttonListar;
+	private JMenuBar menuBar;
+	private JMenu mnNewMenuOptions;
+	private JMenuItem mntmNewMenuItemAdd;
+	private JMenuItem mntmNewMenuItemList;
+	private JMenuItem mntmNewMenuItemUpdate;
+	private JMenuItem mntmNewMenuItemDelete;
+	
+	private Checkbox checkboxCo2;
+	private Checkbox checkboxThermomether;
+	private Checkbox checkboxVideo;
+	private Checkbox checkboxCh4;
 
 	public JMonitoringArea() throws SQLException {
 		setTitle("\u00C1rea de Monitoramento");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 649, 490);
+		setBounds(100, 100, 366, 459);
+		
+		this.menuBar = new JMenuBar();
+		setJMenuBar(this.menuBar);
+		
+		this.mnNewMenuOptions = new JMenu("Op\u00E7\u00F5es");
+		mnNewMenuOptions.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				mnNewMenuOptions.setVisible(true);;
+			}
+		});
+		this.menuBar.add(this.mnNewMenuOptions);
+		
+		this.mntmNewMenuItemAdd = new JMenuItem("Adicionar");
+		this.mntmNewMenuItemAdd.addActionListener(this);
+		this.mnNewMenuOptions.add(this.mntmNewMenuItemAdd);
+		
+		this.mntmNewMenuItemList = new JMenuItem("Listar");
+		this.mntmNewMenuItemList.addActionListener(this);
+		this.mnNewMenuOptions.add(this.mntmNewMenuItemList);
+		
+		this.mntmNewMenuItemUpdate = new JMenuItem("Atualizar");
+		this.mntmNewMenuItemUpdate.addActionListener(this);
+		this.mnNewMenuOptions.add(this.mntmNewMenuItemUpdate);
+		
+		this.mntmNewMenuItemDelete = new JMenuItem("Apagar");
+		this.mntmNewMenuItemDelete.addActionListener(this);
+		this.mnNewMenuOptions.add(mntmNewMenuItemDelete);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		setContentPane(this.contentPane);
 
 		this.abscissa = new Label("Abcissa");
 		this.abscissa.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.abscissa.setBounds(60, 24, 56, 24);
+		this.abscissa.setBounds(10, 26, 56, 24);
 		this.abscissa.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 			}
@@ -77,65 +114,23 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 
 		this.ordenada = new Label("Ordenada");
 		this.ordenada.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.ordenada.setBounds(319, 24, 70, 24);
+		this.ordenada.setBounds(178, 26, 70, 24);
 		contentPane.add(this.ordenada);
 
 		this.textFieldAbcissa = new TextField();
 		this.textFieldAbcissa.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldAbcissa.setBounds(133, 24, 130, 24);
+		this.textFieldAbcissa.setBounds(72, 26, 82, 24);
 		contentPane.add(this.textFieldAbcissa);
 
 		this.textFieldOrdenada = new TextField();
 		this.textFieldOrdenada.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldOrdenada.setBounds(407, 24, 130, 24);
+		this.textFieldOrdenada.setBounds(254, 26, 82, 24);
 		contentPane.add(this.textFieldOrdenada);
-
-		this.video = new Label("V\u00EDdeo");
-		this.video.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.video.setBounds(60, 122, 56, 24);
-		contentPane.add(this.video);
-
-		this.textFieldVideo = new TextField();
-		this.textFieldVideo.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldVideo.setBounds(133, 122, 130, 24);
-		contentPane.add(this.textFieldVideo);
-
-		this.termometro = new Label("Term\u00F4metro");
-		this.termometro.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.termometro.setBounds(308, 122, 81, 24);
-		contentPane.add(this.termometro);
-
-		this.textFieldTermometro = new TextField();
-		this.textFieldTermometro.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldTermometro.setBounds(407, 122, 130, 24);
-		contentPane.add(this.textFieldTermometro);
-
-		this.co2 = new Label("CO2");
-		this.co2.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.co2.setBounds(83, 213, 33, 24);
-		contentPane.add(this.co2);
-
-		this.textFieldCO2 = new TextField();
-		this.textFieldCO2.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldCO2.setBounds(133, 213, 130, 24);
-		contentPane.add(this.textFieldCO2);
-
-		this.CH4 = new Label("CH4");
-		this.CH4.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.CH4.setBounds(356, 213, 33, 24);
-		contentPane.add(this.CH4);
-
-		this.textFieldCH4 = new TextField();
-		this.textFieldCH4.setFont(new Font("Calibri", Font.PLAIN, 14));
-		this.textFieldCH4.setEnabled(true);
-		this.textFieldCH4.setEditable(true);
-		this.textFieldCH4.setBounds(407, 213, 130, 24);
-		contentPane.add(this.textFieldCH4);
 
 		this.idResult = new Label();
 		this.idResult.setAlignment(Label.CENTER);
 		this.idResult.setFont(new Font("Calibri", Font.BOLD, 16));
-		this.idResult.setBounds(10, 268, 607, 24);
+		this.idResult.setBounds(10, 204, 352, 24);
 		this.idResult.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 			}
@@ -146,39 +141,34 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 		this.buttonMonitorar = new Button("Monitorar");
 		this.buttonMonitorar.addActionListener(this);
 		this.buttonMonitorar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonMonitorar.setBounds(331, 308, 111, 37);
+		this.buttonMonitorar.setBounds(200, 256, 111, 37);
 		contentPane.add(this.buttonMonitorar);
 
 		this.buttonBuscar = new Button("Buscar");
 
 		this.buttonBuscar.addActionListener(this);
 		this.buttonBuscar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonBuscar.setBounds(173, 308, 111, 37);
+		this.buttonBuscar.setBounds(44, 256, 111, 37);
 		contentPane.add(this.buttonBuscar);
-
-		this.adicionarUnidade = new Button("Adicionar");
-		this.adicionarUnidade.addActionListener(this);
-		this.adicionarUnidade.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.adicionarUnidade.setBounds(10, 379, 116, 37);
-		contentPane.add(this.adicionarUnidade);
-
-		this.buttonApagar = new Button("Apagar");
-		this.buttonApagar.addActionListener(this);
-		this.buttonApagar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonApagar.setBounds(173, 379, 116, 37);
-		contentPane.add(this.buttonApagar);
-
-		this.buttonListar = new Button("Listar");
-		this.buttonListar.addActionListener(this);
-		this.buttonListar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonListar.setBounds(338, 379, 116, 37);
-		contentPane.add(this.buttonListar);
 		
-		this.buttonAtualizar = new Button("Atualizar");
-		this.buttonAtualizar.addActionListener(this);
-		this.buttonAtualizar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonAtualizar.setBounds(501, 379, 116, 37);
-		contentPane.add(this.buttonAtualizar);
+		this.checkboxCo2 = new Checkbox("CO2");
+		checkboxCo2.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxCo2.setBounds(72, 166, 60, 24);
+		this.contentPane.add(this.checkboxCo2);
+		
+		checkboxThermomether = new Checkbox("Term\u00F4metro");
+		checkboxThermomether.setFont(new Font("Calibri", Font.PLAIN, 16));
+		checkboxThermomether.setBounds(225, 106, 108, 24);
+		contentPane.add(checkboxThermomether);
+		
+		checkboxVideo = new Checkbox("V\u00EDdeo");
+		checkboxVideo.setFont(new Font("Calibri", Font.PLAIN, 16));
+		checkboxVideo.setBounds(69, 106, 108, 24);
+		contentPane.add(checkboxVideo);
+		
+		checkboxCh4 = new Checkbox("CH4");
+		checkboxCh4.setBounds(225, 163, 108, 24);
+		contentPane.add(checkboxCh4);
 
 		this.logic = new AppMonitoring();
 	}
@@ -188,25 +178,25 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 			this.buscar();
 		} else if (arg0.getSource().equals(this.buttonMonitorar)) {
 			this.monitorar();
-		} else if (arg0.getSource().equals(this.adicionarUnidade)) {
+		} else if (arg0.getSource().equals(this.mntmNewMenuItemAdd)) {
 			try {
 				new JAddUnity().setVisible(true);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if (arg0.getSource().equals(this.buttonApagar)) {
+		} else if (arg0.getSource().equals(this.mntmNewMenuItemDelete)) {
 			try {
 				new JDeleteUnity().setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (arg0.getSource().equals(this.buttonListar)) {
+		} else if (arg0.getSource().equals(this.mntmNewMenuItemList)) {
 			try {
 				new JGetAllUnities().frmListarTodasUnidades.setVisible(true);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if(arg0.getSource().equals(this.buttonAtualizar)) {
+		} else if(arg0.getSource().equals(this.mntmNewMenuItemUpdate)) {
 			try {
 				new JUpdateUnity().setVisible(true);
 			} catch (SQLException e) {
@@ -218,10 +208,10 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 	private void buscar() {
 		float abscissa = Float.parseFloat(textFieldAbcissa.getText().toString());
 		float ordenada = Float.parseFloat(textFieldOrdenada.getText().toString());
-		boolean video = Boolean.parseBoolean(textFieldVideo.getText().toString());
-		boolean termometro = Boolean.parseBoolean(textFieldTermometro.getText().toString());
-		boolean co2 = Boolean.parseBoolean(textFieldCO2.getText().toString());
-		boolean ch4 = Boolean.parseBoolean(textFieldCH4.getText().toString());
+		boolean video = this.checkboxVideo.getState();
+		boolean termometro = this.checkboxThermomether.getState();
+		boolean co2 = this.checkboxCo2.getState();
+		boolean ch4 = this.checkboxCh4.getState();
 		Unity unity = null;
 
 		try {
@@ -239,10 +229,10 @@ public class JMonitoringArea extends JFrame implements ActionListener {
 	private void monitorar() {
 		float abscissa = Float.parseFloat(textFieldAbcissa.getText().toString());
 		float ordenada = Float.parseFloat(textFieldOrdenada.getText().toString());
-		boolean video = Boolean.parseBoolean(textFieldVideo.getText().toString());
-		boolean termometro = Boolean.parseBoolean(textFieldTermometro.getText().toString());
-		boolean co2 = Boolean.parseBoolean(textFieldCO2.getText().toString());
-		boolean ch4 = Boolean.parseBoolean(textFieldCH4.getText().toString());
+		boolean video = this.checkboxVideo.getState();
+		boolean termometro = this.checkboxThermomether.getState();
+		boolean co2 = this.checkboxCo2.getState();
+		boolean ch4 = this.checkboxCh4.getState();
 		String idTxt;
 
 		try {

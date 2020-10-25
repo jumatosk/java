@@ -71,7 +71,6 @@ public class JGetAllUnities extends JFrame{
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null},
 			},
 			new String[] {
 				"Id", "Latitude", "Longitude", "V\u00EDdeo", "Term\u00F4metro", "CO2", "CH4", "Tipo"
