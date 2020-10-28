@@ -22,6 +22,7 @@ import br.edu.ifba.ads.inf008.monitoring.entities.Unity;
 import br.edu.ifba.ads.inf008.monitoring.exception.UnityException;
 import br.edu.ifba.ads.inf008.monitoring.session.AppMonitoring;
 import javax.swing.JLabel;
+import java.awt.Checkbox;
 
 public class JUpdateUnity extends JFrame implements ActionListener{
 
@@ -33,14 +34,6 @@ public class JUpdateUnity extends JFrame implements ActionListener{
 	private TextField textFieldLatitude;
 	private Label longitude;
 	private TextField textFieldLongitude;
-	private Label video;
-	private TextField textFieldVideo;
-	private Label termometro;
-	private TextField textFieldTermometro;
-	private Label co2;
-	private TextField textFieldCO2;
-	private Label ch4;
-	private TextField textFieldCH4;
 	private Label tipo;
 	private JLabel tipoUnidade;
 	private TextField textFieldTipo;
@@ -48,6 +41,10 @@ public class JUpdateUnity extends JFrame implements ActionListener{
 	private Button atualizar;
 	
 	private AppMonitoring logic;
+	private Checkbox checkboxVideo;
+	private Checkbox checkboxThermomether;
+	private Checkbox checkboxCo2;
+	private Checkbox checkboxCh4;
 	
 
 	/**
@@ -73,7 +70,7 @@ public class JUpdateUnity extends JFrame implements ActionListener{
 	public JUpdateUnity() throws SQLException {
 		setTitle("Atualizar Unidade");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 530, 369);
+		setBounds(100, 100, 338, 369);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,103 +79,81 @@ public class JUpdateUnity extends JFrame implements ActionListener{
 		this.id = new Label("Id");
 		this.id.setAlignment(Label.RIGHT);
 		this.id.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.id.setBounds(60, 18, 70, 24);
+		this.id.setBounds(10, 18, 70, 24);
 		contentPane.add(this.id);
 
 		this.textFieldId = new TextField();
 		this.textFieldId.setBackground(Color.WHITE);
 		this.textFieldId.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldId.setBounds(136, 18, 70, 24);
+		this.textFieldId.setBounds(86, 18, 70, 24);
 		contentPane.add(this.textFieldId);
 
 		this.latitude = new Label("Latitude");
 		this.latitude.setAlignment(Label.RIGHT);
 		this.latitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.latitude.setBounds(62, 73, 70, 24);
+		this.latitude.setBounds(10, 73, 70, 24);
 		contentPane.add(this.latitude);
 
 		this.textFieldLatitude = new TextField();
 		this.textFieldLatitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldLatitude.setBounds(138, 73, 70, 24);
+		this.textFieldLatitude.setBounds(86, 73, 70, 24);
 		contentPane.add(this.textFieldLatitude);
 
 		this.longitude = new Label("Longitude");
 		this.longitude.setAlignment(Label.RIGHT);
 		this.longitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.longitude.setBounds(65, 133, 70, 24);
+		this.longitude.setBounds(10, 122, 70, 24);
 		contentPane.add(this.longitude);
 
 		this.textFieldLongitude = new TextField();
 		this.textFieldLongitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldLongitude.setBounds(141, 133, 70, 24);
+		this.textFieldLongitude.setBounds(86, 122, 70, 24);
 		contentPane.add(this.textFieldLongitude);
-
-		this.video = new Label("V\u00EDdeo");
-		this.video.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.video.setAlignment(Label.RIGHT);
-		this.video.setBounds(65, 196, 70, 24);
-		contentPane.add(this.video);
-
-		this.textFieldVideo = new TextField();
-		this.textFieldVideo.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldVideo.setBounds(141, 196, 70, 24);
-		contentPane.add(this.textFieldVideo);
-
-		this.termometro = new Label("Term\u00F4metro");
-		this.termometro.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.termometro.setAlignment(Label.RIGHT);
-		this.termometro.setBounds(252, 18, 99, 24);
-		contentPane.add(this.termometro);
-
-		this.textFieldTermometro = new TextField();
-		this.textFieldTermometro.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldTermometro.setBounds(357, 18, 70, 24);
-		contentPane.add(this.textFieldTermometro);
-
-		this.co2 = new Label("CO2");
-		this.co2.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.co2.setAlignment(Label.RIGHT);
-		this.co2.setBounds(281, 73, 70, 24);
-		contentPane.add(this.co2);
-
-		this.textFieldCO2 = new TextField();
-		this.textFieldCO2.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldCO2.setBounds(357, 73, 70, 24);
-		contentPane.add(this.textFieldCO2);
-
-		this.ch4 = new Label("CH4");
-		this.ch4.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.ch4.setAlignment(Label.RIGHT);
-		this.ch4.setBounds(281, 133, 70, 24);
-		contentPane.add(this.ch4);
-
-		this.textFieldCH4 = new TextField();
-		this.textFieldCH4.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldCH4.setBounds(357, 133, 70, 24);
-		contentPane.add(this.textFieldCH4);
 
 		this.atualizar = new Button("Atualizar");
 		this.atualizar.addActionListener(this);
 		this.atualizar.setEnabled(true);
 		this.atualizar.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.atualizar.setBounds(161, 258, 179, 39);
+		this.atualizar.setBounds(67, 260, 179, 39);
 		contentPane.add(this.atualizar);
 		
 		this.tipo = new Label("Tipo");
 		this.tipo.setFont(new Font("Calibri", Font.PLAIN, 16));
 		this.tipo.setAlignment(Label.RIGHT);
-		this.tipo.setBounds(281, 196, 70, 24);
+		this.tipo.setBounds(10, 174, 70, 24);
 		contentPane.add(this.tipo);
 		
 		this.textFieldTipo = new TextField();
 		this.textFieldTipo.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldTipo.setBounds(357, 196, 70, 24);
+		this.textFieldTipo.setBounds(86, 174, 70, 24);
 		contentPane.add(this.textFieldTipo);
 		
 		this.tipoUnidade = new JLabel("0-Euclidiana 1-Manhattan");
 		this.tipoUnidade.setFont(new Font("Calibri", Font.PLAIN, 12));
-		this.tipoUnidade.setBounds(315, 226, 172, 26);
+		this.tipoUnidade.setBounds(20, 204, 148, 26);
 		contentPane.add(this.tipoUnidade);
+		
+		this.checkboxVideo = new Checkbox("V\u00EDdeo");
+		this.checkboxVideo.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxVideo.setBounds(185, 18, 108, 24);
+		contentPane.add(this.checkboxVideo);
+		
+		this.checkboxThermomether = new Checkbox("Term\u00F4metro");
+		this.checkboxThermomether.setEnabled(true);
+		this.checkboxThermomether.setState(false);
+		this.checkboxThermomether.setFont(new Font("Calibri", Font.PLAIN, 16));
+		checkboxThermomether.setBounds(185, 73, 108, 24);
+		contentPane.add(this.checkboxThermomether);
+		
+		this.checkboxCo2 = new Checkbox("CO2");
+		this.checkboxCo2.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxCo2.setBounds(185, 122, 108, 24);
+		contentPane.add(this.checkboxCo2);
+		
+		this.checkboxCh4 = new Checkbox("CH4");
+		this.checkboxCh4.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxCh4.setBounds(185, 174, 108, 24);
+		contentPane.add(this.checkboxCh4);
 		
 		this.logic = new AppMonitoring();
 	}
@@ -190,10 +165,10 @@ public class JUpdateUnity extends JFrame implements ActionListener{
 			float latitude = Float.parseFloat(this.textFieldLatitude.getText().toString());
 			float longitude = Float.parseFloat(this.textFieldLongitude.getText().toString());
 			int tipo = Integer.parseInt(this.textFieldTipo.getText().toString());
-			boolean video = Boolean.parseBoolean(this.textFieldVideo.getText().toString());
-			boolean termometro = Boolean.parseBoolean(this.textFieldTermometro.getText().toString());
-			boolean co2 = Boolean.parseBoolean(this.textFieldCO2.getText().toString());
-			boolean ch4 = Boolean.parseBoolean(this.textFieldCH4.getText().toString());
+			boolean video = this.checkboxVideo.getState();
+			boolean termometro = this.checkboxThermomether.getState();
+			boolean co2 = this.checkboxCo2.getState();
+			boolean ch4 = this.checkboxCh4.getState();
 			Unity unity = null;
 			
 			try {				

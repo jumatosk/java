@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.awt.Color;
 import java.awt.Button;
+import java.awt.Checkbox;
 
 public class JAddUnity extends JFrame implements ActionListener {
 
@@ -30,18 +31,15 @@ public class JAddUnity extends JFrame implements ActionListener {
 	private TextField textFieldLatitude;
 	private Label longitude;
 	private TextField textFieldLongitude;
-	private Label video;
-	private TextField textFieldVideo;
-	private Label termometro;
-	private TextField textFieldTermometro;
-	private Label co2;
-	private TextField textFieldCO2;
-	private Label ch4;
-	private TextField textFieldCH4;
 
 	private Button buttonManhattan;
 	private Button buttonEuclidiana;
 
+	private Checkbox checkboxVideo;
+	private Checkbox checkboxThermomether;
+	private Checkbox checkboxCo2;
+	private Checkbox checkboxCh4;
+	
 	private AppMonitoring logic;
 
 	public static void main(String[] args) {
@@ -60,7 +58,7 @@ public class JAddUnity extends JFrame implements ActionListener {
 	public JAddUnity() throws SQLException {
 		setTitle("Adicionar Unidade");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 649, 489);
+		setBounds(100, 100, 415, 337);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -69,93 +67,69 @@ public class JAddUnity extends JFrame implements ActionListener {
 		this.id = new Label("Id");
 		this.id.setAlignment(Label.RIGHT);
 		this.id.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.id.setBounds(98, 54, 70, 24);
+		this.id.setBounds(41, 25, 26, 24);
 		contentPane.add(this.id);
 
 		this.textFieldId = new TextField();
 		this.textFieldId.setBackground(Color.WHITE);
 		this.textFieldId.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldId.setBounds(174, 54, 70, 24);
+		this.textFieldId.setBounds(97, 25, 70, 24);
 		contentPane.add(this.textFieldId);
 
 		this.latitude = new Label("Latitude");
 		this.latitude.setAlignment(Label.RIGHT);
 		this.latitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.latitude.setBounds(98, 142, 70, 24);
+		this.latitude.setBounds(10, 77, 57, 24);
 		contentPane.add(this.latitude);
 
 		this.textFieldLatitude = new TextField();
 		this.textFieldLatitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldLatitude.setBounds(174, 142, 70, 24);
+		this.textFieldLatitude.setBounds(97, 77, 70, 24);
 		contentPane.add(this.textFieldLatitude);
 
 		this.longitude = new Label("Longitude");
 		this.longitude.setAlignment(Label.RIGHT);
 		this.longitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.longitude.setBounds(98, 221, 70, 24);
+		this.longitude.setBounds(10, 132, 70, 24);
 		contentPane.add(this.longitude);
 
 		this.textFieldLongitude = new TextField();
 		this.textFieldLongitude.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldLongitude.setBounds(174, 221, 70, 24);
+		this.textFieldLongitude.setBounds(97, 132, 70, 24);
 		contentPane.add(this.textFieldLongitude);
-
-		this.video = new Label("V\u00EDdeo");
-		this.video.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.video.setAlignment(Label.RIGHT);
-		this.video.setBounds(98, 301, 70, 24);
-		contentPane.add(this.video);
-
-		this.textFieldVideo = new TextField();
-		this.textFieldVideo.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldVideo.setBounds(174, 301, 70, 24);
-		contentPane.add(this.textFieldVideo);
-
-		this.termometro = new Label("Term\u00F4metro");
-		this.termometro.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.termometro.setAlignment(Label.RIGHT);
-		this.termometro.setBounds(286, 54, 99, 24);
-		contentPane.add(this.termometro);
-
-		this.textFieldTermometro = new TextField();
-		this.textFieldTermometro.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldTermometro.setBounds(391, 54, 70, 24);
-		contentPane.add(this.textFieldTermometro);
-
-		this.co2 = new Label("CO2");
-		this.co2.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.co2.setAlignment(Label.RIGHT);
-		this.co2.setBounds(315, 142, 70, 24);
-		contentPane.add(this.co2);
-
-		this.textFieldCO2 = new TextField();
-		this.textFieldCO2.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldCO2.setBounds(391, 142, 70, 24);
-		contentPane.add(this.textFieldCO2);
-
-		this.ch4 = new Label("CH4");
-		this.ch4.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.ch4.setAlignment(Label.RIGHT);
-		this.ch4.setBounds(315, 221, 70, 24);
-		contentPane.add(this.ch4);
-
-		this.textFieldCH4 = new TextField();
-		this.textFieldCH4.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.textFieldCH4.setBounds(391, 221, 70, 24);
-		contentPane.add(this.textFieldCH4);
 
 		this.buttonManhattan = new Button("Adicionar Manhattan");
 		this.buttonManhattan.addActionListener(this);
 		this.buttonManhattan.setEnabled(true);
 		this.buttonManhattan.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonManhattan.setBounds(98, 381, 179, 39);
+		this.buttonManhattan.setBounds(10, 238, 179, 39);
 		contentPane.add(this.buttonManhattan);
 
 		this.buttonEuclidiana = new Button("Adicionar Euclidiana");
 		this.buttonEuclidiana.addActionListener(this);
 		this.buttonEuclidiana.setFont(new Font("Calibri", Font.PLAIN, 16));
-		this.buttonEuclidiana.setBounds(336, 381, 179, 39);
+		this.buttonEuclidiana.setBounds(208, 238, 179, 39);
 		contentPane.add(this.buttonEuclidiana);
+		
+		this.checkboxVideo = new Checkbox("V\u00EDdeo");
+		this.checkboxVideo.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxVideo.setBounds(222, 25, 108, 24);
+		contentPane.add(this.checkboxVideo);
+		
+		this.checkboxThermomether = new Checkbox("Term\u00F4metro");
+		this.checkboxThermomether.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxThermomether.setBounds(222, 77, 108, 24);
+		contentPane.add(this.checkboxThermomether);
+		
+		this.checkboxCo2 = new Checkbox("CO2");
+		this.checkboxCo2.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxCo2.setBounds(222, 132, 108, 24);
+		contentPane.add(this.checkboxCo2);
+		
+		this.checkboxCh4 = new Checkbox("CH4");
+		this.checkboxCh4.setFont(new Font("Calibri", Font.PLAIN, 16));
+		this.checkboxCh4.setBounds(222, 182, 108, 24);
+		contentPane.add(this.checkboxCh4);
 
 		this.logic = new AppMonitoring();
 	}
@@ -191,10 +165,10 @@ public class JAddUnity extends JFrame implements ActionListener {
 		String id = this.textFieldId.getText();
 		float latitude = Float.parseFloat(this.textFieldLatitude.getText().toString());
 		float longitude = Float.parseFloat(this.textFieldLongitude.getText().toString());
-		boolean video = Boolean.parseBoolean(this.textFieldVideo.getText().toString());
-		boolean termometro = Boolean.parseBoolean(this.textFieldTermometro.getText().toString());
-		boolean co2 = Boolean.parseBoolean(this.textFieldCO2.getText().toString());
-		boolean ch4 = Boolean.parseBoolean(this.textFieldCH4.getText().toString());
+		boolean video = this.checkboxVideo.getState();
+		boolean termometro = this.checkboxThermomether.getState();
+		boolean co2 = this.checkboxCo2.getState();
+		boolean ch4 = this.checkboxCh4.getState();
 
 		this.logic.addManhattanUnity(id, latitude, longitude, video, termometro, co2, ch4);
 	}
@@ -203,10 +177,10 @@ public class JAddUnity extends JFrame implements ActionListener {
 		String id = this.textFieldId.getText();
 		float latitude = Float.parseFloat(this.textFieldLatitude.getText().toString());
 		float longitude = Float.parseFloat(this.textFieldLongitude.getText().toString());
-		boolean video = Boolean.parseBoolean(this.textFieldVideo.getText().toString());
-		boolean termometro = Boolean.parseBoolean(this.textFieldTermometro.getText().toString());
-		boolean co2 = Boolean.parseBoolean(this.textFieldCO2.getText().toString());
-		boolean ch4 = Boolean.parseBoolean(this.textFieldCH4.getText().toString());
+		boolean video = this.checkboxVideo.getState();
+		boolean termometro = this.checkboxThermomether.getState();
+		boolean co2 = this.checkboxCo2.getState();
+		boolean ch4 = this.checkboxCh4.getState();
 
 		this.logic.addEuclideanUnity(id, latitude, longitude, video, termometro, co2, ch4);
 	}
